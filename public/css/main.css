@@ -1,0 +1,171 @@
+:root{
+    --background-color: #ffc700;
+    --bs-primary-rgb:#12296c;
+}
+
+body{
+    /* background-color: aqua; */
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffc700;
+    color:#12296c;
+    /* font-weight: 300; */
+    font-size: 1.2rem ;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family:"Unbounded",cursive;
+    font-weight: 800;
+}
+.container-fluid-custom{
+    max-width: 1600px;
+}
+.btn{
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    border-radius: 2rem;
+}
+.btn-outline-primary {
+    --bs-btn-color: #12296c;
+    --bs-btn-border-color: #12296c;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0043a8;
+    --bs-btn-hover-border-color: #0043a8;
+    --bs-btn-focus-shadow-rgb: 13, 110, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #12296c;
+    --bs-btn-active-border-color: #12296c;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #12296c;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #12296c;
+    --bs-gradient: none
+}
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #12296c;
+    --bs-btn-border-color: #12296c;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0043a8;
+    --bs-btn-hover-border-color: #0043a8;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #12296c;
+    --bs-btn-active-border-color: #12296c;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #12296c;
+    --bs-btn-disabled-border-color: #12296c;
+}
+@media(min-width:1200px){
+    .home{
+        background: url("../img/human-1.svg") left bottom no-repeat,
+        url("../img/human-2.svg") right bottom no-repeat,
+        url("../img/noise-bg.png") left top repeat,
+        #ffc700;
+    }
+}
+.home-title::before{
+    content:url("../img/stars.svg");
+    position:absolute;
+    left:-50px;
+    top:-30px;
+}
+.home-title::after{
+    content:url("../img/stars.svg");
+    position:absolute;
+    right:-50px;
+    bottom:-30px;
+}
+.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+.pagination{
+    --bs-border-radius: 2rem;
+}    
+.pagination a{
+    background-color:#12296c;
+    color:#fff;
+}
+input[type="radio"] {
+    display: none;
+  }
+  input[type="radio"]:checked + label span {
+    transform: scale(1.25);
+  }
+  input[type="radio"]:checked + label .red {
+    border: 2px solid #711313;
+  }
+  input[type="radio"]:checked + label .orange {
+    border: 2px solid #873a08;
+  }
+  input[type="radio"]:checked + label .yellow {
+    border: 2px solid #816102;
+  }
+  input[type="radio"]:checked + label .olive {
+    border: 2px solid #505a0b;
+  }
+  input[type="radio"]:checked + label .green {
+    border: 2px solid #0e4e1d;
+  }
+  input[type="radio"]:checked + label .teal {
+    border: 2px solid #003633;
+  }
+  input[type="radio"]:checked + label .blue {
+    border: 2px solid #103f62;
+  }
+  input[type="radio"]:checked + label .violet {
+    border: 2px solid #321a64;
+  }
+  input[type="radio"]:checked + label .purple {
+    border: 2px solid #501962;
+  }
+  input[type="radio"]:checked + label .pink {
+    border: 2px solid #851554;
+  }
+  label {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  label:hover span {
+    transform: scale(1.25);
+  }
+  label span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease-in-out;
+  }
+  label span.red {
+    background: #db2828;
+  }
+  label span.orange {
+    background: #f2711c;
+  }
+  label span.yellow {
+    background: #fbbd08;
+  }
+  label span.olive {
+    background: #b5cc18;
+  }
+  label span.green {
+    background: #21ba45;
+  }
+  label span.teal {
+    background: #00b5ad;
+  }
+  label span.blue {
+    background: #2185d0;
+  }
+  label span.violet {
+    background: #6435c9;
+  }
+  label span.purple {
+    background: #a333c8;
+  }
+  label span.pink {
+    background: #e03997;
+  }
+  

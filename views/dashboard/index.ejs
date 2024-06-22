@@ -1,0 +1,64 @@
+<div class="container-fluid container-fluid-custom pb-5">
+    <div class="row mb-4 px-5">
+        <div class="col">
+            <h1>Welcome <%=locals.username %>!</h1>
+        </div>
+        <div class="col text-end">
+            <a href="/dashboard/add" class="btn btn-primary">+ New Note</a>
+        </div>
+    </div>
+</div>
+<div class="px-5 row gx-3">
+    <%#console.log(notes)%>
+    <%if(notes && notes.length>0) {%>
+        <%for(var i=0;i<notes.length;i++){%>
+            <% console.log(notes[i].borderColor) %>
+            <div class="col-sm-3 mb-4 bg-light mx-3" style="border-width:5px;border-color: <%= notes[i].borderColor?notes[i].borderColor:"black" %>;border-style:solid">
+                <div class="card-border-primary p-3" style="min-height: 210px;">
+                    <a href="/dashboard/item/<%= notes[i]._id%>" class="text-decoration-none card-body">
+                        <h5 class="card-title mb-2"><%= notes[i].title %></h5>
+                        <p class="card-text"><%= notes[i].body %></p>
+                    </a>
+                </div>
+            </div>
+
+       <% }}else{%>
+            <div class="row">
+                <div class="col-3 me-5">
+                    <img src="/img/human-3.svg" alt="human pointing hand towards create button">
+                </div>
+                <div class="col mt-md-4">
+                    <h2>Okay...</h2>
+                    <h4>Let's start with your 1st note:<br/><br/>
+                        <a href="/dashboard/add">Create one!</a>
+                        </h4></div>
+                </div>
+            </div>
+        <%}%>
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center mt-5">
+      <li class="page-item"><a class="page-link " href="/dashboard?page=<%= (parseInt(current)-1<=parseInt(0))?current:parseInt(current)-1%>">Previous</a></li>
+      <li class="page-item"><a class="page-link"  href="/dashboard?page=<%= (parseInt(current) + 1 > parseInt(pages)) ? parseInt(current) : (parseInt(current) + 1) %>"><%= parseInt(current)+ 1%></a></li>
+      <li class=" page-item"><a class="page-link"  href="/dashboard?page=<%= parseInt(current)+ 2>parseInt(pages)?current:(parseInt(current)+ 2)%>"><%= parseInt(current)+2%></a></li>
+      <li class="page-item"><a class="page-link" href="/dashboard?page=<%= parseInt(current)+ 3>parseInt(pages)?current:(parseInt(current)+ 3 )%>"><%= parseInt(current)+ 3%></a></li>
+      <li class=" page-item"><a class="page-link" href="/dashboard?page=<%= parseInt(current)+ 1>parseInt(pages)?current:(parseInt(current)+ 1) %>">Next</a></li>
+      
+    </ul>
+  </nav>
+
+
+    <!-- <script type="text/javascript">
+        console.log("veda");
+        document.addEventListener("DOMContentLoaded", function() {
+            var pages =  pages; // Assuming `pages` is a variable you pass from EJS
+            const doc= document.querySelectorAll(".page-item");
+            console.log(doc);
+            document.querySelectorAll(".page-item").forEach((e) => {
+                console.log(e);
+                if (parseInt(e.innerHTML) > pages) {
+                    e.querySelector(".page-link").classList.add("disabled");
+                }
+            });
+        });
+    </script> -->
