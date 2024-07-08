@@ -1,0 +1,77 @@
+<div class="container-fluid container-fluid-custom pb-5 mb-5">
+    <div class="row mb-5 px-5">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class=" breadcrumb list-unstyled">
+                    <li class="breadcrumb-item">
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li  class="breadcrumb-item active"><%= note.title%></li>
+                </ol>
+            </nav>
+            <!-- <%# %> -->
+           
+            <form action="/dashboard/ai/<%=noteID%>?_method=PATCH" id="geminiForm" method="POST" class="mt-3 position-relative">
+                <div class="form-group mb-3" style="left:1px;top:1px;right:1px;" style="width:100px">
+                    <input type="text" name="title" class="form-control border-0 fw-bold fs-4" id="title" placeholder="Ask a question...">
+                </div>
+                
+                    <label><h5>Tone:</h5></label>
+                    <div class="col-6 tone-setter d-flex justify-content-between mb-5 mt-2">
+                        
+                            <input type="radio" name="tone" value="Professional">
+                            <button type="button" class="btn btn-primary btn-lg" name="Professional"> Professional</button>
+                        
+                        <!-- <br> -->
+                       
+                            <input type="radio" name="tone" value="Funny">
+                            <button type="button" class="btn btn-primary btn-lg" name=" Funny">Funny</button>
+                        
+                        <!-- <br> -->
+                        
+                            <input type="radio" name="tone" value="Enthusiastic">
+                            <button type="button" class="btn btn-primary btn-lg" name="Enthusiastic">Enthusiastic</button>
+                            
+                        
+                    </div>
+                   
+                <div class="mt-3 mb-5">
+                    <label><h5>Format:</h5></label>
+                    <div class="col-6 tone-setter d-flex justify-content-between mb-5 mt-2">
+                        
+                            <input type="radio" name="format" value="Business_Letters">
+                            <button type="button" class="btn btn-primary btn-lg" name="Business Letters">Business_Letters</button>
+                        <!-- <br> -->
+                        
+                            <input type="radio" name="format" value="Email">
+                            <button type="button" class="btn btn-primary btn-lg" name="Email">Email</button>
+                        <!-- <br> -->
+                        
+                            <input type="radio" name="format" value="Formal_letter">
+                            <button type="button" class="btn btn-primary btn-lg" name="Formal letter">Formal_letter</button>
+                        
+                    </div>
+                </div> 
+            
+           
+            <div class="form-group ">
+                <textarea name="text" class="form-control border-0 fs-4" placeholder="Generating response..." id="body" rows="12"><%= note.body %></textarea>
+            </div>
+            <div class="d-flex justify-content-end form-group mt-4 mb-5">
+                <button type="submit" class="btn btn-primary btn-lg" name="ask">Generate response</button>
+            </div>
+        </form>
+            <form action="/dashboard/ai/<%=noteID%>?_method=POST"  method="POST" class="mt-3 position-relative">
+                <div class="position-relative form-group">
+                    <%# const content=note.body %>
+                    <%#console.log(note.body)%> 
+                    <button type="submit" class="btn btn-primary btn-lg" name="update" value="<%= note.body %>">Update</button>
+                </div>
+            </form>
+            
+           
+        </div>
+
+       
+    </div>
+</div>

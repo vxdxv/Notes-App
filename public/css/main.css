@@ -86,7 +86,7 @@ h1,h2,h3,h4,h5,h6{
     background-color:#12296c;
     color:#fff;
 }
-input[type="radio"] {
+.radio-button {
     display: none;
   }
   input[type="radio"]:checked + label span {

@@ -1,6 +1,8 @@
 import Note from "../models/Notes.js";
 import mongoose from "mongoose";
 import { jsPDF } from "jspdf";
+import run from "../../data.js";
+
 
 async function dashboard(req,res,next){
     let perpage=6;
@@ -129,14 +131,6 @@ async function dashboardSearchSubmitNotes(req,res){
         console.log(error);
     }
 }
-// async function dashboardDownloadNote(req,res){
-//     const doc = new jsPDF();
-//     const content=JSON.parse(req.body.download);
-//     doc.text(content.body, 100, 100);
-//     doc.save(content.title+".pdf");
-//     console.log(content);
-//     res.redirect("/dashboard/item/"+req.params.id);
-// }
 async function dashboardDownloadNote(req, res) {
     try {
         const doc = new jsPDF();
@@ -157,7 +151,6 @@ async function dashboardDownloadNote(req, res) {
     }
 }
 async function dashboardSetColor(req,res){
-    
     res.render("dashboard/new",{
 
         noteID:req.params.id
@@ -170,6 +163,45 @@ async function dashboardColored(req,res){
     await Note.findOneAndUpdate({_id:req.params.id},{borderColor:req.body.color}).where({user:req.user.id});
     res.redirect("/dashboard");
 }
+async function dashboardEnhance(req,res){
+    const note=await Note.findById({_id:req.params.id}).where({user:req.user.id}).lean();
+    console.log(console.log(req.params));
+    if(note){
+        res.render("dashboard/enhance",{
+            noteID:req.params.id,
+            note,
+            layout:'../views/layouts/dashboard'
+        })
+    }else{
+        res.send("Something went wrong...");
+    }
+}
+
+async function dashboardEnhanced(req,res){
+    console.log(req.body);
+    console.log(req.params.id);
+    const text=await run(req.body.title+"with tone:"+req.body.tone+"in format:"+ req.body.format+"if context is not given,refer to this if asked-"+req.body.text);
+    const note={title:req.body.title,body:text.candidates[0].content.parts[0].text};
+    console.log("***"+JSON.stringify(req.session.content));
+    // req.session.content = note;
+   
+    console.log("vvveda");
+    // res.json({ content: req.session.content });
+    // res.redirect('/dashboard');
+    res.render("dashboard/enhance",{
+        noteID:req.params.id,
+        note,
+        layout:'../views/layouts/dashboard'
+    })}
+async function dashboardUpdateNotefromAi(req,res){
+    console.log(req.body);
+    console.log(req.params.id+" "+req.body.update+" "+req.user.id)
+        await Note.findOneAndUpdate({_id:req.params.id},{body:req.body.update}).where({user:req.user.id});
+        res.redirect("/dashboard");
+    }
+
+
+
 
 export default dashboard;
-export {dashboardViewNote,dashboardUpdateNote,dashboardDeleteNote,dashboardCreateNote,dashboardSubmitNote,dashboardSearchNotes,dashboardSearchSubmitNotes,dashboardDownloadNote,dashboardSetColor,dashboardColored};
+export {dashboardViewNote,dashboardUpdateNote,dashboardDeleteNote,dashboardCreateNote,dashboardSubmitNote,dashboardSearchNotes,dashboardSearchSubmitNotes,dashboardDownloadNote,dashboardSetColor,dashboardColored,dashboardEnhance,dashboardEnhanced,dashboardUpdateNotefromAi};

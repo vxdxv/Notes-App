@@ -14,7 +14,7 @@
                 <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" id="Delete Button" data-bs-target="#exampleModal">Delete</button>
             </div>
             <!-- <%# %> -->
-            <form action="/dashboard/item/<%=noteID%>?_method=PUT"  method="POST" class="mt-3 position-relative">
+            <form action="/dashboard/item/<%=noteID%>?_method=PATCH"  method="POST" class="mt-3 position-relative">
                 <div class="form-group mb-4 position-absolute" style="left:1px;top:1px;right:1px;">
                     <input type="text" name="title" class="form-control border-0 fw-bold fs-4" value="<%= note.title%>" id="title">
                 </div>
@@ -36,12 +36,20 @@
                 </div>
             </form>
 
-            <!-- <form action="/dashboard/new" method="POST">  -->
+           
+                <div class="position-relative form-group mt-4">
+                    <% const content1={title:note.title,body:note.body}%>
+                    <a href="/dashboard/ai/<%=noteID%>">
+                        <button type="submit" class="btn btn-primary btn-lg" name="enhance_with_ai" value="<%=JSON.stringify(content1)%>" ><i class="fa fa-wand-magic-sparkles"></i> Enhance with Ai</button>
+                    </a>
+                </div>
+         
+            
+
                 <div class="position-relative form-group mt-4 d-flex justify-content-end me-5">
                     <a href="/dashboard/new/<%=noteID%>"><button type="submit" class="btn btn-primary btn-lg" name="setColor">Set color</button></a>
                     
                 </div>
-            <!-- </form> -->
            
            
         </div>

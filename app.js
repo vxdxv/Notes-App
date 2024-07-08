@@ -57,7 +57,12 @@ app.use("/",dashboard);
 app.get("*",(req,res)=>{
     res.status(404).render("404");
 })
-
+app.use((req, res, next) => {
+    if (req.method === 'GET') {
+        req.session.previousPage = req.originalUrl;
+    }
+    next();
+});
 app.listen(port,()=>{
     console.log("Listening through port "+port);
 })
